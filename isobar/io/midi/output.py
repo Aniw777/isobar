@@ -69,6 +69,7 @@ class MidiOutputDevice (OutputDevice):
         msg = mido.Message('note_off', note=int(note), channel=int(channel))
         self.midi.send(msg)
 
+    # TODO: call as part of cleanup demo footer
     def all_notes_off(self): # HOWTO
         log.debug("[midi] All notes off")
         for channel in range(16):
