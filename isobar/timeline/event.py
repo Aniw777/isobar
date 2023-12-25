@@ -10,18 +10,18 @@ log = logging.getLogger(__name__)
 
 class EventDefaults:
     def __init__(self):
-        default_values = {
-            EVENT_ACTIVE: True,
-            EVENT_CHANNEL: DEFAULT_EVENT_CHANNEL,
-            EVENT_DURATION: DEFAULT_EVENT_DURATION,
-            EVENT_GATE: DEFAULT_EVENT_GATE,
+        default_values = { # CODE
+            EVENT_ACTIVE   : True,
+            EVENT_CHANNEL  : DEFAULT_EVENT_CHANNEL,
+            EVENT_DURATION : DEFAULT_EVENT_DURATION,
+            EVENT_GATE     : DEFAULT_EVENT_GATE,
             EVENT_AMPLITUDE: DEFAULT_EVENT_AMPLITUDE,
-            EVENT_OCTAVE: DEFAULT_EVENT_OCTAVE,
+            EVENT_OCTAVE   : DEFAULT_EVENT_OCTAVE,
             EVENT_TRANSPOSE: DEFAULT_EVENT_TRANSPOSE,
-            EVENT_KEY: Key("C", Scale.default),
-            EVENT_QUANTIZE: DEFAULT_EVENT_QUANTIZE
+            EVENT_KEY      : Key("C", Scale.default),
+            EVENT_QUANTIZE : DEFAULT_EVENT_QUANTIZE
         }
-        for key, value in default_values.items():
+        for key, value in default_values.items(): # CODE
             setattr(self, key, value)
 
 class Event:
@@ -37,7 +37,7 @@ class Event:
         if EVENT_AMPLITUDE_LEGACY in event_values:
             event_values[EVENT_AMPLITUDE] = event_values[EVENT_AMPLITUDE_LEGACY]
 
-        for key, value in defaults.__dict__.items():
+        for key, value in defaults.__dict__.items(): # CODE
             # Defaults can be patterns too
             event_values.setdefault(key, Pattern.value(value))
 

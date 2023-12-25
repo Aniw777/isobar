@@ -5,13 +5,13 @@ class Chord:
     """ Represents a chord made up of 1 or more note intervals.
     """
 
-    dict = {}
+    dict = {} # CODE
 
     def __init__(self, intervals=[], root=0, name="unnamed chord"):
         self.intervals = intervals
         self.name = name
         self.root = root
-        if name not in Chord.dict:
+        if name not in Chord.dict: # CODE
             Chord.dict[name] = self
 
     def __str__(self):
@@ -19,11 +19,11 @@ class Chord:
 
     @property
     def semitones(self):
-        semitones = [0] + [sum(self.intervals[0:n + 1]) for n in range(len(self.intervals))]
+        semitones = [0] + [sum(self.intervals[0:n + 1]) for n in range(len(self.intervals))] # CODE
         return semitones
 
     @staticmethod
-    def byname(name):
+    def byname(name): # CODE
         return Chord.dict[name]
 
     @staticmethod
@@ -49,9 +49,9 @@ class Chord:
         return Chord(intervals, 0, name if name else "chord", random.randint(0, 12))
 
 
-Chord.major = Chord([4, 3, 5], 0, "major")
-Chord.minor = Chord([3, 4, 5], 0, "minor")
+Chord.major      = Chord([4, 3, 5], 0, "major")
+Chord.minor      = Chord([3, 4, 5], 0, "minor")
 Chord.diminished = Chord([3, 3, 6], 0, "diminished")
-Chord.augmented = Chord([4, 4, 4], 0, "diminished")
-Chord.sus4 = Chord([5, 2, 5], 0, "sus4")
-Chord.sus2 = Chord([7, 2, 5], 0, "sus4")
+Chord.augmented  = Chord([4, 4, 4], 0, "augmented")
+Chord.sus4       = Chord([5, 2, 5], 0, "sus4")
+Chord.sus2       = Chord([7, 2, 5], 0, "sus2")

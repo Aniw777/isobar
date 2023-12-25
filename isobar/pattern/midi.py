@@ -9,7 +9,7 @@ import mido
 import os
 
 class IsobarMIDIManager:
-    shared_manager = None
+    shared_manager = None # CODE
 
     def __init__(self, device_name: str = None):
         if device_name is None:
@@ -20,7 +20,7 @@ class IsobarMIDIManager:
         self.input.callback = self.handle_message
         self.control_handlers = [[] for _ in range(128)]
 
-        if IsobarMIDIManager.shared_manager is None:
+        if IsobarMIDIManager.shared_manager is None: # CODE
             IsobarMIDIManager.shared_manager = self
 
     def handle_message(self, message):
@@ -28,7 +28,7 @@ class IsobarMIDIManager:
             self.on_control_change(message.control, message.value)
 
     @classmethod
-    def get_shared_manager(cls):
+    def get_shared_manager(cls): # CODE
         if IsobarMIDIManager.shared_manager is None:
             IsobarMIDIManager.shared_manager = IsobarMIDIManager()
         return IsobarMIDIManager.shared_manager

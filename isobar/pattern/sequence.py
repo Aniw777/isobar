@@ -23,11 +23,11 @@ class PSequence(Pattern):
         [1, 2, 3, 5, 1, 2, 3, 5, 1, 2, 3, 5, 1, 2, 3, 5]
         """
 
-    def __init__(self, sequence=None, repeats=sys.maxsize):
+    def __init__(self, sequence=None, repeats=sys.maxsize): # CODE
         #------------------------------------------------------------------------
         # take a copy of the list to avoid changing the original
         #------------------------------------------------------------------------
-        if not hasattr(sequence, "__getitem__"):
+        if not hasattr(sequence, "__getitem__"): # CODE
             raise ValueError("Sequence must take a list argument")
         if sequence is None:
             sequence = []
@@ -439,7 +439,7 @@ class PInterpolate(Pattern):
             elif self.interpolation == INTERPOLATION_LINEAR:
                 dt = target - self.value
                 self.step_values = list(self.value + dt * (n + 1) / vsteps for n in range(vsteps))
-            elif self.interpolation == INTERPOLATION_COSINE:
+            elif self.interpolation == INTERPOLATION_COSINE: # CODE
                 dt = target - self.value
                 self.step_values = list(self.value + dt * 0.5 * (1.0 - math.cos(math.pi * (n + 1) / vsteps))
                                         for n in range(vsteps))

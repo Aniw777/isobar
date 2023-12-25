@@ -18,7 +18,7 @@ from .midi import *
 
 __all__ = []
 key = value = None
-for key, value in vars().items():
+for key, value in vars().items(): # CODE
     try:
         # Add every class to pydoc
         if issubclass(value, object):

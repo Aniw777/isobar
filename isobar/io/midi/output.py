@@ -69,7 +69,7 @@ class MidiOutputDevice (OutputDevice):
         msg = mido.Message('note_off', note=int(note), channel=int(channel))
         self.midi.send(msg)
 
-    def all_notes_off(self):
+    def all_notes_off(self): # HOWTO
         log.debug("[midi] All notes off")
         for channel in range(16):
             for note in range(128):
@@ -81,12 +81,12 @@ class MidiOutputDevice (OutputDevice):
         msg = mido.Message('control_change', control=int(control), value=int(value), channel=int(channel))
         self.midi.send(msg)
 
-    def program_change(self, program=0, channel=0):
+    def program_change(self, program=0, channel=0): # HOWTO
         log.debug("[midi] Program change (channel %d, program_change %d)" % (channel, program))
         msg = mido.Message('program_change', program=int(program), channel=int(channel))
         self.midi.send(msg)
 
-    def pitch_bend(self, pitch=0, channel=0):
+    def pitch_bend(self, pitch=0, channel=0): # HOWTO
         log.debug("[midi] Pitch bend (channel %d, pitch %d)" % (channel, pitch))
         msg = mido.Message('pitchwheel', pitch=int(pitch), channel=int(channel))
         self.midi.send(msg)

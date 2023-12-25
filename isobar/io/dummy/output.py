@@ -18,7 +18,7 @@ class DummyOutputDevice(OutputDevice):
         return DEFAULT_TICKS_PER_BEAT
 
     def tick(self):
-        self.current_time += 1.0 / self.ticks_per_beat
+        self.current_time += 1.0 / self.ticks_per_beat # HOWTO
 
     def note_on(self, note=60, velocity=64, channel=0):
         self.events.append([round(self.current_time, 8), "note_on", note, velocity, channel])

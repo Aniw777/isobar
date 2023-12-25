@@ -392,7 +392,7 @@ class Track:
             #        register for this behaviour rather than happening magically...)
             #----------------------------------------------------------------------
             if hasattr(self.output_device, "event") and callable(getattr(self.output_device, "event")):
-                d = copy.copy(event)
+                d = copy.copy(event) # CODE
                 for key, value in list(d.items()):
                     #------------------------------------------------------------------------
                     # turn non-builtin objects into their string representations.
@@ -427,9 +427,10 @@ class Track:
                 # shorter than the number of notes.
                 #----------------------------------------------------------------------
                 for index, note in enumerate(notes):
-                    amp = event.amplitude[index] if isinstance(event.amplitude, tuple) else event.amplitude
-                    channel = event.channel[index] if isinstance(event.channel, tuple) else event.channel
-                    gate = event.gate[index] if isinstance(event.gate, tuple) else event.gate
+                    amp     = event.amplitude[index] if isinstance(event.amplitude, tuple) else event.amplitude
+                    channel = event.channel[index]   if isinstance(event.channel, tuple)   else event.channel
+                    gate    = event.gate[index]      if isinstance(event.gate, tuple)      else event.gate
+
                     # TODO: Add an EVENT_SUSTAIN that allows absolute note lengths to be specified
 
                     if (amp is not None and amp > 0) and (gate is not None and gate > 0):

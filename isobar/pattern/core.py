@@ -212,7 +212,7 @@ class Pattern:
         """
         Returns the timeline that this Pattern is embedded in, if any.
         """
-        stack = inspect.stack()
+        stack = inspect.stack() # CODE
         for frame in stack:
             frameobj = frame[0]
             args, _, _, value_dict = inspect.getargvalues(frameobj)
@@ -226,7 +226,7 @@ class Pattern:
         """
         Returns a copy of this Pattern.
         """
-        return copy.deepcopy(self)
+        return copy.deepcopy(self) # CODE
 
     @staticmethod
     def value(v):
@@ -346,16 +346,17 @@ class PDict(Pattern):
         """
 
     def __init__(self, value=None):
-        from .sequence import PSequence
+        from .sequence import PSequence # CODE
 
         self.dict = {}
 
-        if type(value) == dict:
+        if type(value) == dict: # CODE
             #------------------------------------------------------------------------
             # Value is a dict of arrays.
             #------------------------------------------------------------------------
             self.dict = dict([(k, Pattern.pattern(v)) for k, v in value.items()])
-        elif type(value) == list:
+            
+        elif type(value) == list: # CODE
             #------------------------------------------------------------------------
             # Value is an array of dicts.
             #------------------------------------------------------------------------

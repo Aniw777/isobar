@@ -98,6 +98,8 @@ def note_name_to_frequency(note_name):
 def frequency_ratio_to_midi_semitones(frequency_ratio):
     return int(round(math.log2(frequency_ratio) * 12))
 
+
+
 def scale_lin_exp(value, from_min=0, from_max=1, to_min=1, to_max=10):
     if value < from_min:
         return to_min
@@ -105,27 +107,38 @@ def scale_lin_exp(value, from_min=0, from_max=1, to_min=1, to_max=10):
         return to_max
     return ((to_max / to_min) ** ((value - from_min) / (from_max - from_min))) * to_min
 
+
 def scale_lin_lin(value, from_min=0, from_max=1, to_min=0, to_max=1):
     norm = float(value - from_min) / (from_max - from_min)
     return norm * float(to_max - to_min) + to_min
 
+
+
 def bipolar_diverge(maximum):
-    """ Returns [0, 1, -1, ...., maximum, -maximum ] """
+    """
+    Returns [0, 1, -1, ...., maximum, -maximum ]
+    """
     sequence = list(sum(list(zip(list(range(maximum + 1)), list(range(0, -maximum - 1, -1)))), ()))
     sequence.pop(0)
     return sequence
 
 def filter_tone_row(source, target, bend_limit=7):
-    """ Filters the notes in <source> by the permitted notes in <target>.
-    returns a tuple (<bool> acceptable, <int> pitch_bend) """
+    """
+    Filters the notes in <source> by the permitted notes in <target>.
+    returns a tuple (<bool> acceptable, <int> pitch_bend)
+    """
     bends = bipolar_diverge(bend_limit)
     for bend in bends:
         if all(((note + bend) % 12) in target for note in source):
             return (True, bend)
     return (False, 0)
 
+
+
+
 def random_seed(seed):
     random.seed(seed)
+
 
 def make_clock_multiplier(output_clock_rate, input_clock_rate):
     multiple = 1.0

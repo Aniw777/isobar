@@ -79,4 +79,4 @@ def test_event_control_cosine_interpolation(dummy_timeline):
         for n in range(2 * dummy_timeline.ticks_per_beat + 1)
     ]
     values = [event[3] for event in dummy_timeline.output_device.events]
-    assert expected_series == pytest.approx(values, rel=0.000001)
+    assert expected_series == pytest.approx(values, rel=0.000001) # CODE

@@ -18,7 +18,7 @@ For a full list of all Pattern classes:
 __version__ = "0"
 __author__ = "Daniel Jones <http://www.erase.net/>"
 
-from .note import *
+from .note import *  # CODE most are simple .py modules, a few are subpackages
 from .scale import *
 from .chord import *
 from .key import *
